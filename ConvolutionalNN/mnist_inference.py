@@ -53,7 +53,7 @@ def inference(input_tensor, train, regularizer):
     with tf.variable_scope('layer3-conv2'):
         conv2_weights = tf.get_variable(
                 'weight', [CONV2_SIZE, CONV2_SIZE, CONV1_DEEP, CONV2_DEEP],
-                initializer=tf.truncated_normal_initializer(stdder=0.1))
+                initializer=tf.truncated_normal_initializer(stddev=0.1))
         conv2_biases = tf.get_variable(
                 'bias', [CONV2_DEEP],
                 initializer=tf.constant_initializer(0.0))
@@ -80,7 +80,7 @@ def inference(input_tensor, train, regularizer):
     reshaped = tf.reshape(pool2, [pool_shape[0], nodes])
     
     # 声明第五层全连接层的变量病实现前向传播过程
-    with tf.veriable_scope('layer5-fc1'):
+    with tf.variable_scope('layer5-fc1'):
         fc1_weights = tf.get_variable(
                 'weight', [nodes, FC_SIZE],
                 initializer=tf.truncated_normal_initializer(stddev=0.1))

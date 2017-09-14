@@ -22,7 +22,7 @@ TRAINING_STEPS = 30001
 MOVING_AVERAGE_DECAY = 0.99
 
 # 模型保存的路径和文件名
-MODEL_SAVE_PATH = r"C:\Users\Ean2\GitHub\LearnNote\TensorFlow\Model"
+MODEL_SAVE_PATH = r"C:\Users\Ean2\GitHub\MyTensorFlow\Model"
 MODEL_NAME = "model.ckpt"
 
 def train(mnist):
@@ -38,7 +38,7 @@ def train(mnist):
     
     regularizer = tf.contrib.layers.l2_regularizer(REGULARAZTION_RATE)
     # 直接使用mnist_inference.py 中定义的前向传播过程
-    y = mnist_inference.inference(x, regularizer)
+    y = mnist_inference.inference(x, 1, regularizer)
     global_step = tf.Variable(0, trainable=False)
     
     # 和5.2.1小节样例中类似地定义损失函数、学习率、晃动平均操作及训练过程
@@ -84,7 +84,7 @@ def train(mnist):
                            global_step=global_step)
 
 def main(argv=None):
-    mnist_file = r'C:\Users\Ean2\GitHub\LearnNote\TensorFlow\OriginData'
+    mnist_file = r'C:\Users\Ean2\GitHub\MyTensorFlow\OriginData'
     mnist = input_data.read_data_sets(mnist_file, one_hot=True)
     train(mnist)
 
